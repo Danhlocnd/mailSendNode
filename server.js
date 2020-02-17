@@ -133,14 +133,14 @@ app.listen(port, function () {
 
     // Will display time in 10:30:23 format
     var formattedTime = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
-    if (hours == "22" && (minutes.substr(-2) <= 15)) {
+    if (hours == "23" && (minutes.substr(-2) <= 15)) {
       console.log("in")
       setTimeout(() => {
         sendding(formattedTime,"In")
       }, getRandomInt(10) * 60000);
 
     }
-    if (hours == "22" && minutes.substr(-2) >= 30 &&  59 >= minutes.substr(-2)) {
+    if (hours == "1" && minutes.substr(-2) >= 30 &&  59 >= minutes.substr(-2)) {
       console.log("out")
       setTimeout(() => {
         sendding(formattedTime,"Out")

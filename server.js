@@ -72,6 +72,8 @@ app.get('/', function (req, res) {
 
 });
 function sendding(dateTime, stringInOut) {
+  var dates = new Date();
+  var min=  "0" + dates.getMinutes()
   // app.post('/send-email', function (req, res) {
   let transporter = nodeMailer.createTransport({
     host: 'smtp.gmail.com',
@@ -97,10 +99,11 @@ function sendding(dateTime, stringInOut) {
     if (error) {
       return console.log(error);
     }
-    var dates = new Date();
-    console.log("Ngày" ,formattedTime)
-    console.log("Check", stringInOut)
-    console.log(dates.getHours() +":"+(("0" + dates.getMinutes()).substr(-2)))
+
+
+    // console.log("Ngày" ,formattedTime)
+    // console.log("Check", stringInOut)
+    // console.log(dates.getHours() +":"+(min.substr(-2)))
     console.log('Message %s sent: %s', info.messageId, info.response);
     // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     //     res.render('index');
@@ -119,7 +122,7 @@ app.listen(port, function () {
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-  // setInterval(() => {
+  setInterval(() => {
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
     var date = new Date();
     // Hours part from the timestamp
@@ -137,13 +140,13 @@ app.listen(port, function () {
       }, getRandomInt(10) * 60000);
 
     }
-    if (hours == "21" && minutes.substr(-2) >= 30 &&  59 >= minutes.substr(-2)) {
+    if (hours == "22" && minutes.substr(-2) >= 30 &&  59 >= minutes.substr(-2)) {
       console.log("out")
       setTimeout(() => {
         sendding(formattedTime,"Out")
       }, getRandomInt(15) * 60000);
     }
-  // }, 1800000)
+  }, 1800000)
  
 
 });
